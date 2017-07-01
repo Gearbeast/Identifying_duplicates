@@ -26,9 +26,8 @@ def get_shop_by_links(html):
         link = 'https://www.perriconemd.com' + a
         #print(link)
         links_headings.append(link)
-    
     print(links_headings)
-    
+
     return links_headings
 
 
@@ -37,9 +36,12 @@ def main():
     url = 'https://www.perriconemd.com/skincare/shop-by-product/'
     links = get_shop_by_links( get_html(url) )
 
-# На выходе получает 3 ссылки:
-# Основные товары
+# перенести весь код в links.py
+# На выходе должна получать еще ссылки:
+# Основные товары - получает
 # https://www.perriconemd.com/skincare/shop-by-product/
+# https://www.perriconemd.com/skincare/shop-by-collection
+# https://www.perriconemd.com/skincare/shop-by-concern
 
 # Наборы
 # https://www.perriconemd.com/skincare-sets/

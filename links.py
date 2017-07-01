@@ -27,9 +27,10 @@ def get_product_links(html):
             #print(type(link))
             i += 1
             link_list.append(link)
-            #print(i)
+    # i += i        
+    # print(i)
 
-    #print(len(link_list))
+    # print(link_list)
     return link_list
   
 
@@ -42,39 +43,37 @@ def get_page_links():
     shop_by_product = 'https://www.perriconemd.com/skincare/shop-by-product'
     shop_by_collection = 'https://www.perriconemd.com/skincare/shop-by-collection'
     shop_by_concern = 'https://www.perriconemd.com/skincare/shop-by-concern'
-    url = [shop_by_product, shop_by_collection, shop_by_concern]
+    value_sets = 'https://www.perriconemd.com/skincare-sets/'
+    supplements = 'https://www.perriconemd.com/supplements-shop-all/'
+    basis_link = [shop_by_product, shop_by_collection, shop_by_concern, value_sets, supplements]
+    urls = []
 
     for i in range(12, 96, 12):
         i = str(i)
         #print(type(i))
         x = '%s/?sz=12&start=%s&format=page-element' % (shop_by_product, i)
-        url.append(x)
+        urls.append(x)
         y = '%s/?sz=12&start=%s&format=page-element' % (shop_by_collection, i) 
-        url.append(y)
+        urls.append(y)
         z = '%s/?sz=12&start=%s&format=page-element' % (shop_by_concern, i)
-        url.append(z)
-    #print(url)
-
-    return url
+        urls.append(z)
+    
+    for l in basis_link:
+        urls.append(l)
+    #print(urls)
+    return urls
 
 def main():
     page_link_list = get_page_links()
     for page_link in page_link_list:
         # print(page_link)
-        prod_link_list = get_product_links( get_html(page_link) )    
-       
-
-
-# Основные товары
-# https://www.perriconemd.com/skincare/shop-by-product/
-# https://www.perriconemd.com/skincare/shop-by-collection/
-# https://www.perriconemd.com/skincare/shop-by-concern/
-
-# Наборы
-# https://www.perriconemd.com/skincare-sets/
-
-# Добавки
-# https://www.perriconemd.com/supplements-shop-all/
+        prod_link_list = get_product_links( get_html(page_link) )
+    #print(link_list)
+    # Заготовка
+    # url = 'https://www.perriconemd.com/skincare/shop-by-product/'
+    # links = crawler.get_shop_by_links( crawler.get_html(url) )
+    # for ls in links:
+    #     prod_link_list = get_product_links( get_html(page_link) )
 
 
 if __name__ == '__main__':
